@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
 @Repository
 public interface EnchereDureeRepository extends CrudRepository<EnchereDuree,Integer> {
     @Query(value = "select * from encheredurees order by idduree desc limit 1",nativeQuery = true)

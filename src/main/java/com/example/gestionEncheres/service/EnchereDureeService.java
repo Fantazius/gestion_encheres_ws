@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class EnchereDureeService {
-    @Autowired
+    @Autowired(required = true)
     EnchereDureeRepository enchereDureeRepository;
 
     //getting all enchereDurees record by using the method findaAll() of CrudRepository
