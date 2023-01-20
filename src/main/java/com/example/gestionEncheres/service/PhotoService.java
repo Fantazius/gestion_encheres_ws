@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class PhotoService {
-    @Autowired
+    @Autowired(required=true)
     PhotoRepository photoRepository;
 
     public List<Photo> findAll(){

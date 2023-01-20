@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/admins")
 public class AdminController {
-    @Autowired
+    @Autowired(required=true)
     AdminService adminService;
     //creating a get mapping that retrieves all the Admin detail from the database
     @GetMapping()

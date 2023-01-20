@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/commissions")
 public class CommissionController {
-    @Autowired
+    @Autowired(required=true)
     CommissionService commissionService;
     //creating a get mapping that retrieves all the Commission detail from the database
     @GetMapping()

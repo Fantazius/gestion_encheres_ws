@@ -14,9 +14,9 @@ import java.util.List;
 
 @Service
 public class EnchereService {
-    @Autowired
+    @Autowired(required=true)
     EnchereRepository encheresRepository;
-    @Autowired
+    @Autowired(required=true)
     EnchereDureeRepository enchereDureeRepository;
 
     //getting all encheres record by using the method findaAll() of CrudRepository

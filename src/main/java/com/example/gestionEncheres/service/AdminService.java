@@ -15,10 +15,10 @@ import java.util.List;
 
 @Service
 public class AdminService {
-    @Autowired
+    @Autowired(required=true)
     AdminRepository adminRepository;
 
-    @Autowired
+    @Autowired(required=true)
     AdminTokenService adminTokenService;
 
     //getting all admins record by using the method findaAll() of CrudRepository

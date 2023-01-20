@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/utilisateur")
 public class UtilisateurController {
-    @Autowired
+    @Autowired(required=true)
     UtilisateurService utilisateurService;
     //creating a get mapping that retrieves all the Utilisateur detail from the database
     @GetMapping()

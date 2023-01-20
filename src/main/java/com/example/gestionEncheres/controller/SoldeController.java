@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/soldes")
 public class SoldeController {
-    @Autowired
+    @Autowired(required=true)
     SoldeService soldeService;
     //creating a get mapping that retrieves all the Solde detail from the database
     @GetMapping()

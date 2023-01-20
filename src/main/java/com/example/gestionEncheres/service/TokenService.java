@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class TokenService {
 
-    @Autowired
+    @Autowired(required=true)
     TokenRepository tokenRepository;
     private static final String ALGORITHM = "SHA-1";
     private static final String BYTE_ENCODE = "UTF-8";

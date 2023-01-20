@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class CommissionService {
-    @Autowired
+    @Autowired(required=true)
     CommissionRepository commissionRepository;
 
     //getting all commission record by using the method findaAll() of CrudRepository

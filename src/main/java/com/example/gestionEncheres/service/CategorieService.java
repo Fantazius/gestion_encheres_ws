@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class CategorieService {
-    @Autowired
+    @Autowired(required=true)
     CategorieRepository categorieRepository;
 
     //getting all categories record by using the method findaAll() of CrudRepository

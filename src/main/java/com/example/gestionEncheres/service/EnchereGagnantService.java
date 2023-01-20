@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class EnchereGagnantService {
 
-    @Autowired
+    @Autowired(required=true)
     EnchereGagnantRepository enchereGagnantRepository;
 
 

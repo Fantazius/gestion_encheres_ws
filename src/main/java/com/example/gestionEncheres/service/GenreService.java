@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Service
 public class GenreService {
-    @Autowired
+    @Autowired(required=true)
     GenreRepository genreRepository;
 
     //getting all genres record by using the method findaAll() of CrudRepository

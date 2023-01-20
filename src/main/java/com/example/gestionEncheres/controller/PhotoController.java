@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/photos")
 public class PhotoController {
 
-    @Autowired
+    @Autowired(required=true)
     PhotoRepository photoRepository;
 
     @GetMapping

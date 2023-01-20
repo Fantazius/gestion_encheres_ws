@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/enchereDurees")
 public class EnchereDureeController {
-    @Autowired
+    @Autowired(required=true)
     EnchereDureeService enchereDureeService;
     //creating a get mapping that retrieves all the EnchereDuree detail from the database
     @GetMapping()

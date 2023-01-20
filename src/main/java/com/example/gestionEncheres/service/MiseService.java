@@ -15,11 +15,11 @@ import java.util.List;
 
 @Service
 public class MiseService {
-    @Autowired
+    @Autowired(required=true)
     MiseRepository miseRepository;
-    @Autowired
+    @Autowired(required=true)
     TokenRepository tokenRepository;
-    @Autowired
+    @Autowired(required=true)
     EnchereRepository enchereRepository;
 
     //getting all mises record by using the method findaAll() of CrudRepository

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/mises")
 public class MiseController {
-    @Autowired
+    @Autowired(required=true)
     MiseService miseService;
     //creating a get mapping that retrieves all the Mise detail from the database
     @GetMapping("/getallmises")

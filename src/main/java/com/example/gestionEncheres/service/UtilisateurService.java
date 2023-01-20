@@ -18,11 +18,11 @@ import java.util.List;
 
 @Service
 public class UtilisateurService {
-    @Autowired
+    @Autowired(required=true)
     UtilisateurRepository utilisateurRepository;
-    @Autowired
+    @Autowired(required=true)
     EnchereRepository enchereRepository;
-    @Autowired
+    @Autowired(required=true)
     TokenService tokenService;
 
     //getting all utilisateurs record by using the method findaAll() of CrudRepository

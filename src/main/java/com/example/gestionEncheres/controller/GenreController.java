@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/genres")
 public class GenreController {
-    @Autowired
+    @Autowired(required=true)
     GenreService genreService;
     //creating a get mapping that retrieves all the Genre detail from the database
     @GetMapping()

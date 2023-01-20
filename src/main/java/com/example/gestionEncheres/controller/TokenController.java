@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/tokens")
 public class TokenController {
-    @Autowired
+    @Autowired(required=true)
     TokenService tokenService;
 
     @GetMapping

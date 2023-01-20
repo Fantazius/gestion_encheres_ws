@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/encheresFinished")
 public class EnchereGagnantController {
 
-    @Autowired
+    @Autowired(required=true)
     EnchereGagnantService enchereGagnantService;
     @GetMapping("")
     private Object getListEnchereFinished()

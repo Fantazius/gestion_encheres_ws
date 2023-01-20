@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class GagnantService {
-    @Autowired
+    @Autowired(required=true)
     GagnantRepository gagnantRepository;
 
     //getting all gagnants record by using the method findaAll() of CrudRepository

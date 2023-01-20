@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/encheres")
 public class EnchereController {
-    @Autowired
+    @Autowired(required=true)
     EnchereService enchereService;
     //creating a get mapping that retrieves all the Enchere detail from the database
     @GetMapping()

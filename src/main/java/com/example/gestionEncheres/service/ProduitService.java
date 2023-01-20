@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class ProduitService {
-    @Autowired
+    @Autowired(required=true)
     ProduitRepository produitRepository;
 
     //getting all produits record by using the method findaAll() of CrudRepository

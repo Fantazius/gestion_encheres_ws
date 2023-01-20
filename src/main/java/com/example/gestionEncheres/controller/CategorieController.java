@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/categories")
 public class CategorieController {
-    @Autowired
+    @Autowired(required=true)
     CategorieService categorieService;
     //creating a get mapping that retrieves all the Categorie detail from the database
     @GetMapping()
