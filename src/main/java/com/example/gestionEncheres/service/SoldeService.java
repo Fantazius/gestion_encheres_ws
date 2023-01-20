@@ -14,25 +14,25 @@ public class SoldeService {
     @Autowired(required=true)
     SoldeRepository soldeRepository;
 
-    //getting all soldes record by using the method findaAll() of CrudRepository
+    //getting all soldes record by using the method findaAll() of JpaRepository
     public List<Solde> getAllSoldes()
     {
         List<Solde> soldes = new ArrayList<Solde>();
         soldeRepository.findAll().forEach(soldes::add);
         return soldes;
     }
-    //getting a specific record by using the method findById() of CrudRepository
+    //getting a specific record by using the method findById() of JpaRepository
     public Solde getSoldesById(int id)
     {
         return soldeRepository.findById(id).get();
     }
-    //saving a specific record by using the method save() of CrudRepository
+    //saving a specific record by using the method save() of JpaRepository
     public void saveOrUpdate(Solde solde)
     {
         solde.setDateDepot(new Timestamp(System.currentTimeMillis()));
         soldeRepository.save(solde);
     }
-    //deleting a specific record by using the method deleteById() of CrudRepository
+    //deleting a specific record by using the method deleteById() of JpaRepository
     public void delete(int id)
     {
         soldeRepository.deleteById(id);

@@ -13,24 +13,24 @@ public class GagnantService {
     @Autowired(required=true)
     GagnantRepository gagnantRepository;
 
-    //getting all gagnants record by using the method findaAll() of CrudRepository
+    //getting all gagnants record by using the method findaAll() of JpaRepository
     public List<Gagnant> getAllGagnants()
     {
         List<Gagnant> gagnants = new ArrayList<Gagnant>();
         gagnantRepository.findAll().forEach(gagnants::add);
         return gagnants;
     }
-    //getting a specific record by using the method findById() of CrudRepository
+    //getting a specific record by using the method findById() of JpaRepository
     public Gagnant getGagnantsById(int id)
     {
         return gagnantRepository.findById(id).get();
     }
-    //saving a specific record by using the method save() of CrudRepository
+    //saving a specific record by using the method save() of JpaRepository
     public void saveOrUpdate(Gagnant gagnant)
     {
         gagnantRepository.save(gagnant);
     }
-    //deleting a specific record by using the method deleteById() of CrudRepository
+    //deleting a specific record by using the method deleteById() of JpaRepository
     public void delete(int id)
     {
         gagnantRepository.deleteById(id);

@@ -2,7 +2,7 @@ package com.example.gestionEncheres.repository;
 import com.example.gestionEncheres.models.Enchere;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public interface EnchereRepository extends CrudRepository<Enchere,Integer> {
+public interface EnchereRepository extends JpaRepository<Enchere,Integer> {
     @Query(value = "select utilisateurs.nom from encheres join utilisateurs on encheres.idutilisateur=utilisateurs.idutilisateur where encheres.idutilisateur=:idUtilisateur and encheres.idEnchere=:idEnchere",nativeQuery = true)
     public String isMine(@Param("idUtilisateur") Integer idUtilisateur, @Param("idEnchere") Integer idEnchere);
 

@@ -19,14 +19,14 @@ public class EnchereService {
     @Autowired(required=true)
     EnchereDureeRepository enchereDureeRepository;
 
-    //getting all encheres record by using the method findaAll() of CrudRepository
+    //getting all encheres record by using the method findaAll() of JpaRepository
     public List<Enchere> getAllEncheres()
     {
         List<Enchere> encheres = new ArrayList<Enchere>();
         encheresRepository.findAll().forEach(encheres::add);
         return encheres;
     }
-    //getting a specific record by using the method findById() of CrudRepository
+    //getting a specific record by using the method findById() of JpaRepository
     public Enchere getEncheresById(int id)
     {
         return encheresRepository.findById(id).get();
@@ -44,7 +44,7 @@ public class EnchereService {
         }
     }
 
-    //saving a specific record by using the method save() of CrudRepository
+    //saving a specific record by using the method save() of JpaRepository
     public void addEnchere(Enchere enchere) throws Exception {
         if(enchere.getPrix_min_enchere()>0){
             if(isInIntervalleImposed(enchere.getDuree())) {
@@ -160,7 +160,7 @@ public class EnchereService {
         //return encheresRepository.rechercher(condition);
     }
 
-    //deleting a specific record by using the method deleteById() of CrudRepository
+    //deleting a specific record by using the method deleteById() of JpaRepository
     public void delete(int id)
     {
         encheresRepository.deleteById(id);

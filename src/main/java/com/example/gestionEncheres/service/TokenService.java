@@ -50,17 +50,17 @@ public class TokenService {
         return tokens;
     }
 
-    //getting a specific record by using the method findById() of CrudRepository
+    //getting a specific record by using the method findById() of JpaRepository
     public Token getTokensById(int id)
     {
         return tokenRepository.findById(id).get();
     }
-    //saving a specific record by using the method save() of CrudRepository
+    //saving a specific record by using the method save() of JpaRepository
     public void saveOrUpdate(Token token)
     {
         tokenRepository.save(token);
     }
-    //deleting a specific record by using the method deleteById() of CrudRepository
+    //deleting a specific record by using the method deleteById() of JpaRepository
     public void delete(int id)
     {
         tokenRepository.deleteById(id);

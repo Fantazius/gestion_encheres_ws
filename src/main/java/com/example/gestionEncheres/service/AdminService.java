@@ -21,24 +21,24 @@ public class AdminService {
     @Autowired(required=true)
     AdminTokenService adminTokenService;
 
-    //getting all admins record by using the method findaAll() of CrudRepository
+    //getting all admins record by using the method findaAll() of JpaRepository
     public List<Admin> getAllAdmins()
     {
         List<Admin> admins = new ArrayList<Admin>();
         adminRepository.findAll().forEach(admins::add);
         return admins;
     }
-    //getting a specific record by using the method findById() of CrudRepository
+    //getting a specific record by using the method findById() of JpaRepository
     public Admin getAdminsById(int id)
     {
         return adminRepository.findById(id).get();
     }
-    //saving a specific record by using the method save() of CrudRepository
+    //saving a specific record by using the method save() of JpaRepository
     public void saveOrUpdate(Admin admin)
     {
         adminRepository.save(admin);
     }
-    //deleting a specific record by using the method deleteById() of CrudRepository
+    //deleting a specific record by using the method deleteById() of JpaRepository
     public void delete(int id)
     {
         adminRepository.deleteById(id);

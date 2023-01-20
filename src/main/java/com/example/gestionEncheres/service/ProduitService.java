@@ -13,24 +13,24 @@ public class ProduitService {
     @Autowired(required=true)
     ProduitRepository produitRepository;
 
-    //getting all produits record by using the method findaAll() of CrudRepository
+    //getting all produits record by using the method findaAll() of JpaRepository
     public List<Produit> getAllProduits()
     {
         List<Produit> produits = new ArrayList<Produit>();
         produitRepository.findAll().forEach(produits::add);
         return produits;
     }
-    //getting a specific record by using the method findById() of CrudRepository
+    //getting a specific record by using the method findById() of JpaRepository
     public Produit getProduitsById(int id)
     {
         return produitRepository.findById(id).get();
     }
-    //saving a specific record by using the method save() of CrudRepository
+    //saving a specific record by using the method save() of JpaRepository
     public void saveOrUpdate(Produit produit)
     {
         produitRepository.save(produit);
     }
-    //deleting a specific record by using the method deleteById() of CrudRepository
+    //deleting a specific record by using the method deleteById() of JpaRepository
     public void delete(int id)
     {
         produitRepository.deleteById(id);

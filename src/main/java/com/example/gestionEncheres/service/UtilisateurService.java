@@ -25,19 +25,19 @@ public class UtilisateurService {
     @Autowired(required=true)
     TokenService tokenService;
 
-    //getting all utilisateurs record by using the method findaAll() of CrudRepository
+    //getting all utilisateurs record by using the method findaAll() of JpaRepository
     public List<Utilisateur> getAllUtilisateurs()
     {
         List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
         utilisateurRepository.findAll().forEach(utilisateurs::add);
         return utilisateurs;
     }
-    //getting a specific record by using the method findById() of CrudRepository
+    //getting a specific record by using the method findById() of JpaRepository
     public Utilisateur getUtilisateursById(int id)
     {
         return utilisateurRepository.findById(id).get();
     }
-    //saving a specific record by using the method save() of CrudRepository
+    //saving a specific record by using the method save() of JpaRepository
     public void saveOrUpdate(Utilisateur utilisateur) throws Exception {
         if (utilisateur.getNom() == null || utilisateur.getPrenoms() == null || utilisateur.getGenre() == null || utilisateur.getDateNaissance() == null || utilisateur.getEmail() == null || utilisateur.getPassword() == null)
             throw new Exception("Veuillez remplir tout les champs");
@@ -51,7 +51,7 @@ public class UtilisateurService {
             utilisateurRepository.save(utilisateur);
         }
     }
-    //deleting a specific record by using the method deleteById() of CrudRepository
+    //deleting a specific record by using the method deleteById() of JpaRepository
     public void delete(int id)
     {
         utilisateurRepository.deleteById(id);

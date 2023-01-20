@@ -13,24 +13,24 @@ public class EnchereDureeService {
     @Autowired(required=true)
     EnchereDureeRepository enchereDureeRepository;
 
-    //getting all enchereDurees record by using the method findaAll() of CrudRepository
+    //getting all enchereDurees record by using the method findaAll() of JpaRepository
     public List<EnchereDuree> getAllEnchereDurees()
     {
         List<EnchereDuree> enchereDurees = new ArrayList<EnchereDuree>();
         enchereDureeRepository.findAll().forEach(enchereDurees::add);
         return enchereDurees;
     }
-    //getting a specific record by using the method findById() of CrudRepository
+    //getting a specific record by using the method findById() of JpaRepository
     public EnchereDuree getEnchereDureesById(int id)
     {
         return enchereDureeRepository.findById(id).get();
     }
-    //saving a specific record by using the method save() of CrudRepository
+    //saving a specific record by using the method save() of JpaRepository
     public void saveOrUpdate(EnchereDuree enchereDuree)
     {
         enchereDureeRepository.save(enchereDuree);
     }
-    //deleting a specific record by using the method deleteById() of CrudRepository
+    //deleting a specific record by using the method deleteById() of JpaRepository
     public void delete(int id)
     {
         enchereDureeRepository.deleteById(id);

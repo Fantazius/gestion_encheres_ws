@@ -49,17 +49,17 @@ public class AdminTokenService {
         return tokens;
     }
 
-    //getting a specific record by using the method findById() of CrudRepository
+    //getting a specific record by using the method findById() of JpaRepository
     public AdminToken getTokensById(int id)
     {
         return adminTokenRepository.findById(id).get();
     }
-    //saving a specific record by using the method save() of CrudRepository
+    //saving a specific record by using the method save() of JpaRepository
     public void saveOrUpdate(AdminToken token)
     {
         adminTokenRepository.save(token);
     }
-    //deleting a specific record by using the method deleteById() of CrudRepository
+    //deleting a specific record by using the method deleteById() of JpaRepository
     public void delete(int id)
     {
         adminTokenRepository.deleteById(id);

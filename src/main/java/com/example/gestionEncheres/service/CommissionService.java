@@ -13,24 +13,24 @@ public class CommissionService {
     @Autowired(required=true)
     CommissionRepository commissionRepository;
 
-    //getting all commission record by using the method findaAll() of CrudRepository
+    //getting all commission record by using the method findaAll() of JpaRepository
     public List<Commission> getAllCommissions()
     {
         List<Commission> commission = new ArrayList<Commission>();
         commissionRepository.findAll().forEach(commission::add);
         return commission;
     }
-    //getting a specific record by using the method findById() of CrudRepository
+    //getting a specific record by using the method findById() of JpaRepository
     public Commission getCommissionsById(int id)
     {
         return commissionRepository.findById(id).get();
     }
-    //saving a specific record by using the method save() of CrudRepository
+    //saving a specific record by using the method save() of JpaRepository
     public void saveOrUpdate(Commission commission)
     {
         commissionRepository.save(commission);
     }
-    //deleting a specific record by using the method deleteById() of CrudRepository
+    //deleting a specific record by using the method deleteById() of JpaRepository
     public void delete(int id)
     {
         commissionRepository.deleteById(id);

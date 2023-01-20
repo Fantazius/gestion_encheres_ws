@@ -13,24 +13,24 @@ public class CategorieService {
     @Autowired(required=true)
     CategorieRepository categorieRepository;
 
-    //getting all categories record by using the method findaAll() of CrudRepository
+    //getting all categories record by using the method findaAll() of JpaRepository
     public List<Categorie> getAllCategories()
     {
         List<Categorie> categories = new ArrayList<Categorie>();
         categorieRepository.findAll().forEach(categories::add);
         return categories;
     }
-    //getting a specific record by using the method findById() of CrudRepository
+    //getting a specific record by using the method findById() of JpaRepository
     public Categorie getCategoriesById(int id)
     {
         return categorieRepository.findById(id).get();
     }
-    //saving a specific record by using the method save() of CrudRepository
+    //saving a specific record by using the method save() of JpaRepository
     public void saveOrUpdate(Categorie categorie)
     {
         categorieRepository.save(categorie);
     }
-    //deleting a specific record by using the method deleteById() of CrudRepository
+    //deleting a specific record by using the method deleteById() of JpaRepository
     public void delete(int id)
     {
         categorieRepository.deleteById(id);
