@@ -5,9 +5,11 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 
+@Repository
 public interface AdminTokenRepository extends CrudRepository<AdminToken,Integer> {
     @Query(value = "select isAdminTokenValid(?1)",nativeQuery = true)
     public boolean isAdminTokenValid(String token);

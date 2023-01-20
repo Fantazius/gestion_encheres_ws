@@ -16,7 +16,6 @@ public class EnchereGagnantService {
     EnchereGagnantRepository enchereGagnantRepository;
 
 
-
     public List<EnchereGagnant> getListEnchereNonFinished()
     {
         return enchereGagnantRepository.ListEnchereFini();

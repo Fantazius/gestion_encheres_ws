@@ -158,7 +158,7 @@ where valid = 0;
 --          join utilisateurs u on g.idutilisateur = u.idutilisateur;
 
 /*view statistiques par produit*/
-CREATE OR REPLACE VIEW v_stat_produit AS
+-- CREATE OR REPLACE VIEW v_stat_produit AS
 -- SELECT *
 -- FROM produits p
 --          join encheres e on p.idproduit = e.idproduit;
