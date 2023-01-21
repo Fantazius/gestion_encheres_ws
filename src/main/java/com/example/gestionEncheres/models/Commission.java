@@ -9,7 +9,7 @@ import java.sql.Date;
 @NoArgsConstructor
 public class Commission {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcommission", nullable = false)
     private int idCommission;
     @Column(name = "pourcentage")

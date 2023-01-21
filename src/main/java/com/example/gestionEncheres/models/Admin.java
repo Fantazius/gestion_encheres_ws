@@ -11,7 +11,7 @@ import java.sql.Date;
 @NoArgsConstructor
 public class Admin {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idadmin", nullable = false)
     private int idAdmin;
     @Column(name = "nom")
