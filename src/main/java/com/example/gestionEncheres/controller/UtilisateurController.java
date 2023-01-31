@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/utilisateur")
 public class UtilisateurController {
-    @Autowired(required=true)
+    @Autowired
     UtilisateurService utilisateurService;
     //creating a get mapping that retrieves all the Utilisateur detail from the database
     @GetMapping()
@@ -35,9 +35,13 @@ public class UtilisateurController {
     }
     //creating post mapping that post the utilisateur detail in the database
     @PostMapping("/add")
-    private int save(@RequestBody Utilisateur utilisateur) throws Exception {
-        utilisateurService.saveOrUpdate(utilisateur);
-        return utilisateur.getIdUtilisateur();
+    private Object save(@RequestBody Utilisateur utilisateur) {
+        try {
+            utilisateurService.saveOrUpdate(utilisateur);
+            return new Data(utilisateur.getIdUtilisateur());
+        } catch (Exception e) {
+            return new Error(e.getMessage());
+        }
     }
     //creating put mapping that updates the utilisateur detail
     @PutMapping()
@@ -46,13 +50,15 @@ public class UtilisateurController {
         return utilisateur;
     }
 
-    // ici
     @PostMapping("/login")
-    private Data loginUtilisateur(@RequestBody Utilisateur user) throws Exception {
-        return utilisateurService.login(user);
+    private Object loginUtilisateur(@RequestBody Utilisateur user) throws Exception {
+        try {
+            return utilisateurService.login(user);
+        } catch (Exception e) {
+            return new Error(e.getMessage());
+        }
     }
 
-    // ici
     @GetMapping("/{user_id}/bids")
     private Data getMyBids(@PathVariable("user_id") int id) {
         return new Data(utilisateurService.getMyBids(id));
