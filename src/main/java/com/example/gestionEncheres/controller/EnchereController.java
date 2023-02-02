@@ -2,8 +2,12 @@ package com.example.gestionEncheres.controller;
 
 import com.example.gestionEncheres.format.Data;
 import com.example.gestionEncheres.models.Enchere;
+import com.example.gestionEncheres.models.EncherePhotos;
+import com.example.gestionEncheres.models.Token;
 import com.example.gestionEncheres.service.EnchereService;
+import com.example.gestionEncheres.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -14,6 +18,8 @@ import java.util.List;
 public class EnchereController {
     @Autowired(required=true)
     EnchereService enchereService;
+    @Autowired
+    PhotoService photoService;
     //creating a get mapping that retrieves all the Enchere detail from the database
     @GetMapping()
     private Object getAllEncheres()
@@ -40,8 +46,9 @@ public class EnchereController {
 
     // ici
     @PostMapping
-    private void addEnchere(@RequestBody Enchere enchere) throws Exception {
-        enchereService.addEnchere(enchere);
+    private int addEnchere(@RequestBody EncherePhotos enchere) throws Exception {
+        enchereService.save(enchere);
+        return 1;
     }
 
     // ici
@@ -51,9 +58,9 @@ public class EnchereController {
         if(daty!=""){
             date = Date.valueOf(daty);
         }
-        int p = Integer.valueOf(prix);
-        Boolean s = Boolean.valueOf(status);
-        int c = Integer.valueOf(categorie);
+        int p = Integer.parseInt(prix);
+        boolean s = Boolean.parseBoolean(status);
+        int c = Integer.parseInt(categorie);
         return enchereService.rechercher(motCle, date, p, s, c);
     }
 

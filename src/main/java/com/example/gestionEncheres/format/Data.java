@@ -18,4 +18,11 @@ public class Data {
     public Data(Object data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "Data{" +
+                "data=" + data +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.gestionEncheres.controller;
 
+import com.example.gestionEncheres.format.Data;
 import com.example.gestionEncheres.models.Token;
 import com.example.gestionEncheres.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,10 @@ public class TokenController {
     private Token update(@RequestBody Token token) {
         tokenService.saveOrUpdate(token);
         return token;
+    }
+
+    @GetMapping("/{token}/valid")
+    private Object isTokenValid(@PathVariable("token") String token){
+        return new Data(tokenService.isTokenValid(token));
     }
 }

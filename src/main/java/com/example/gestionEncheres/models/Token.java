@@ -75,4 +75,16 @@ public class Token {
     public void setUser(Utilisateur user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Token{" +
+                "idToken=" + idToken +
+                ", idUser=" + idUser +
+                ", token='" + token + '\'' +
+                ", dateGeneration=" + dateGeneration +
+                ", dateExpiration=" + dateExpiration +
+                ", user=" + user +
+                '}';
+    }
 }

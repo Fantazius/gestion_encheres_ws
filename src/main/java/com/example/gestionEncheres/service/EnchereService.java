@@ -4,11 +4,13 @@ import com.example.gestionEncheres.database.DatabaseConnection;
 import com.example.gestionEncheres.models.*;
 import com.example.gestionEncheres.repository.EnchereDureeRepository;
 import com.example.gestionEncheres.repository.EnchereRepository;
+import com.example.gestionEncheres.repository.PhotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.*;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,8 @@ import java.util.List;
 public class EnchereService {
     @Autowired(required=true)
     EnchereRepository encheresRepository;
+    @Autowired(required = true)
+    PhotoRepository photoRepository;
     @Autowired(required=true)
     EnchereDureeRepository enchereDureeRepository;
 
@@ -169,5 +173,16 @@ public class EnchereService {
     public void update(Enchere enchere, int bookid)
     {
         encheresRepository.save(enchere);
+    }
+
+    public void save(EncherePhotos encherePhotos){
+        Enchere enchere=encherePhotos.toEnchere();
+        enchere.setDateenchere(Timestamp.from(Instant.now()));
+        Enchere e=encheresRepository.save(enchere);
+        if (encherePhotos.getImages().length==0) return;
+        Photo p=encherePhotos.toPhoto();
+        p.setIdEnchere(e.getIdEnchere());
+        System.out.println("PHOTO="+p);
+        photoRepository.save(p);
     }
 }

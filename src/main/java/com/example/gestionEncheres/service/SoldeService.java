@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,13 @@ public class SoldeService {
     {
         solde.setDateDepot(new Timestamp(System.currentTimeMillis()));
         soldeRepository.save(solde);
+    }
+
+    public Solde saveAndFlush(Solde solde){
+        if (solde.getDateDepot()==null){
+            solde.setDateDepot(Timestamp.from(Instant.now()));
+        }
+        return soldeRepository.saveAndFlush(solde);
     }
     //deleting a specific record by using the method deleteById() of JpaRepository
     public void delete(int id)

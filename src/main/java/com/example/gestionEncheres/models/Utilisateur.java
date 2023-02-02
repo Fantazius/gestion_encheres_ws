@@ -94,4 +94,18 @@ public class Utilisateur {
     public void setMontantSolde(int montantSolde) {
         this.montantSolde = montantSolde;
     }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" +
+                "idUtilisateur=" + idUtilisateur +
+                ", nom='" + nom + '\'' +
+                ", prenoms='" + prenoms + '\'' +
+                ", genre=" + genre +
+                ", dateNaissance=" + dateNaissance +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", montantSolde=" + montantSolde +
+                '}';
+    }
 }

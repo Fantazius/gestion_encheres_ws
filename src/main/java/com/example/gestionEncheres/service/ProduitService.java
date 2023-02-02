@@ -2,6 +2,7 @@ package com.example.gestionEncheres.service;
 
 import com.example.gestionEncheres.models.Produit;
 import com.example.gestionEncheres.repository.ProduitRepository;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,4 +41,5 @@ public class ProduitService {
     {
         produitRepository.save(produit);
     }
+
 }

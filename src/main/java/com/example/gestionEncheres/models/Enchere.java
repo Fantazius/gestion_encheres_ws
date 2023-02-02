@@ -2,11 +2,13 @@ package com.example.gestionEncheres.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="encheres")
 @NoArgsConstructor
+@AllArgsConstructor
 public class Enchere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -97,5 +99,19 @@ public class Enchere {
 
     public Timestamp getDateenchere() {
         return dateenchere;
+    }
+
+    @Override
+    public String toString() {
+        return "Enchere{" +
+                "idEnchere=" + idEnchere +
+                ", utilisateur=" + utilisateur +
+                ", produit=" + produit +
+                ", description='" + description + '\'' +
+                ", prix_min_enchere=" + prix_min_enchere +
+                ", duree=" + duree +
+                ", dateenchere=" + dateenchere +
+                ", statut=" + statut +
+                '}';
     }
 }

@@ -21,4 +21,5 @@ public interface TokenRepository extends JpaRepository<Token,Integer> {
     @Modifying
     @Query(value = "update Tokens set dateexpiration=now() where token=:token",nativeQuery = true)
     public void deconnexion(@Param("token")String token);
+
 }

@@ -1,12 +1,16 @@
 package com.example.gestionEncheres.models;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 
 @Entity
 @Table(name="produits")
 @NoArgsConstructor
+@AllArgsConstructor
 public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

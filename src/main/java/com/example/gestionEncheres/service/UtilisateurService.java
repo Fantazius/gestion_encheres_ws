@@ -61,6 +61,7 @@ public class UtilisateurService {
     }
 
     public Data login(Utilisateur user) throws Exception{
+        System.out.println(user);
         if (user.getEmail() == null || user.getPassword() == null || user.getEmail().isEmpty() || user.getPassword().isEmpty())
             throw new Exception("Veuillez remplir tout les champs");
         else {

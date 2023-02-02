@@ -36,11 +36,16 @@ public class SoldeController {
         soldeService.delete(soldeid);
     }
     //creating post mapping that post the solde detail in the database
-    @PostMapping("/add")
-    private int save(@RequestBody Solde solde)
+    @PostMapping
+    private Object save(@RequestBody Solde solde)
     {
-        soldeService.saveOrUpdate(solde);
-        return solde.getIdSolde();
+        try{
+            Solde s=soldeService.saveAndFlush(solde);
+            return new Data(s);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new Error(e);
+        }
     }
     //creating put mapping that updates the solde detail
     @PutMapping()
@@ -54,6 +59,4 @@ public class SoldeController {
     private List<Solde> getDepotAttente(){
         return soldeService.getSoldeAnttente();
     }
-
-
 }

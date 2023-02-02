@@ -15,4 +15,8 @@ public class PhotoService {
     public List<Photo> findAll(){
         return photoRepository.findAll();
     }
+
+    public void save(Photo photo){
+        photoRepository.save(photo);
+    }
 }
