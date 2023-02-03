@@ -4,16 +4,13 @@ import com.example.gestionEncheres.models.Enchere;
 import com.example.gestionEncheres.models.EnchereGagnant;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-@Repository
-public interface EnchereGagnantRepository   extends JpaRepository<EnchereGagnant,String> {
+public interface EnchereGagnantRepository   extends CrudRepository<EnchereGagnant,String> {
 
 
-    @Query(nativeQuery = true,value = "SELECT * FROM encheresgagnant")
-    public List<EnchereGagnant> ListEnchereFini();
-
-}
+    @Query(nativeQuery = true,value = "select * from encheresgagnant where idvendeur=:idUtilisateur")
+    public List<EnchereGagnant> listHistorique(@Param("idUtilisateur") int idUtilisateur);}

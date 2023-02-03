@@ -40,10 +40,10 @@ public class DatabaseConnection {
         this.pwd = pwd;
     }
 
-    public Connection toCo(String user, String pwd)throws Exception
+    public Connection toCo()throws Exception
     {
         Class.forName("org.postgresql.Driver"); // PostGres
-        Connection con= DriverManager.getConnection("jdbc:postgresql://localhost:5432/gestion_encheres",user,pwd); // PostGres
+        Connection con= DriverManager.getConnection("jdbc:postgres://zwctziwf:EbK07yQmesBqCasSqaqQXgecBTX4stH1@surus.db.elephantsql.com/zwctziwf"); // PostGres
         return con;
     }
 }

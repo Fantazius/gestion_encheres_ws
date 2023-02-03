@@ -2,6 +2,7 @@ package com.example.gestionEncheres.controller;
 
 import com.example.gestionEncheres.format.Data;
 import com.example.gestionEncheres.models.Utilisateur;
+import com.example.gestionEncheres.service.EnchereService;
 import com.example.gestionEncheres.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 public class UtilisateurController {
     @Autowired
     UtilisateurService utilisateurService;
+    @Autowired
+    EnchereService enchereService;
     //creating a get mapping that retrieves all the Utilisateur detail from the database
     @GetMapping()
     private Object getAllUtilisateurs()
@@ -26,7 +29,7 @@ public class UtilisateurController {
     @GetMapping("/{utilisateurid}")
     private Object getUtilisateurs(@PathVariable("utilisateurid") int utilisateurid)
     {
-        return new Data(utilisateurService.getUtilisateursById(utilisateurid));
+        return new Data(utilisateurService.getUtilisateurByIdAndCorrectMontantSolde(utilisateurid));
     }
     //creating a delete mapping that deletes a specified utilisateur
     @DeleteMapping("/{utilisateurid}")
@@ -66,4 +69,16 @@ public class UtilisateurController {
     private Data getMyBids(@PathVariable("user_id") int id) {
         return new Data(utilisateurService.getMyBids(id));
     }
+
+    @GetMapping("/{user_id}/encheres")
+    private Object getEncheresUtilisateur(@PathVariable("user_id") int id) {
+        try{
+            return new Data(enchereService.getMyEncheres(id));
+        }catch (Exception e){
+            e.printStackTrace();
+            return new Error(e);
+        }
+    }
+
+
 }

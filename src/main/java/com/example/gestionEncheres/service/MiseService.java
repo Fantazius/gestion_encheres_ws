@@ -21,6 +21,16 @@ public class MiseService {
     TokenRepository tokenRepository;
     @Autowired(required=true)
     EnchereRepository enchereRepository;
+    @Autowired(required=true)
+    EnchereService enchereService;
+
+
+
+    public List<Mise> miseByIdenchere(int idenchere){
+        List<Mise> mises = new ArrayList<>();
+        miseRepository.miseByIdenchere(idenchere).forEach(mises::add);
+        return mises;
+    }
 
     //getting all mises record by using the method findaAll() of JpaRepository
     public List<Mise> getAllMises()
@@ -69,16 +79,17 @@ public class MiseService {
         if(this.isValid(token)){
             Token t=tokenRepository.getTokenByToken(token);
             if(!this.isMine(t.getIdUser(), idEnchere)){
-                //insert sql;
-//                Mise mise=new Mise(t.getIdUser(),idEnchere,montant);
+                Enchere e = enchereService.getEncheresById(idEnchere);
+                if (montant < e.getPrix_min_enchere()) throw new Exception("Mise inferieure au prix de depart");
+                if (montant <= miseRepository.getGagnant(idEnchere).getMontant()) throw new Exception("Mise inferieure à la mise gagnante");
                 return miseRepository.addMise(t.getIdUser(),idEnchere,montant);
             }
             else{
-                throw new Exception("Not able to bid");
+                throw new Exception("Ne peux pas miser sur sa propre enchere");
             }
         }
         else{
-            throw new Exception("Must be logged");
+            throw new Exception("Connexion requise");
         }
     }
 }

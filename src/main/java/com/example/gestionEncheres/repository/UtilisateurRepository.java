@@ -22,4 +22,7 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur,Integer
     @Query(value = "update utilisateurs set montantsolde=montantsolde+:montant where idutilisateur=:iduser",nativeQuery = true)
     public void collectMontantWhenWin(@Param("iduser") Integer idUser,@Param("montant") double montant);
 
+    @Query(value = "select * from v_utilisateurs where idutilisateur=?1",nativeQuery = true)
+    public Utilisateur findUserById(Integer idUtilisateur);
+
 }

@@ -21,6 +21,16 @@ public class EncherePhotos extends Enchere{
         return new Photo(getIdEnchere(),getImages());
     }
 
+    public EncherePhotos(Enchere enchere)throws Exception{
+        this.setIdEnchere(enchere.getIdEnchere());
+        this.setUtilisateur(enchere.getUtilisateur());
+        this.setProduit(enchere.getProduit());
+        this.setDescription(enchere.getDescription());
+        this.setPrix_min_enchere(enchere.getPrix_min_enchere());
+        this.setDuree(enchere.getDuree());
+        this.setDateenchere(enchere.getDateenchere());
+        this.setStatut(enchere.isStatut());
+    }
     @Override
     public String toString() {
         return "EncherePhotos{" +

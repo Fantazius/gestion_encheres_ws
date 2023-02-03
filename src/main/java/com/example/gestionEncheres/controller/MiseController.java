@@ -14,6 +14,20 @@ public class MiseController {
     @Autowired(required=true)
     MiseService miseService;
     //creating a get mapping that retrieves all the Mise detail from the database
+
+
+        @GetMapping("/miseByIdenchere/{idenchere}")
+    private Object miseByIdenchere(@PathVariable("idenchere") int idenchere)
+    {
+
+        try {
+            return new Data(miseService.miseByIdenchere(idenchere));
+        }catch (Exception e){
+            return new Error(e);
+        }
+
+    }
+
     @GetMapping("/getallmises")
     private Object getAllMises()
     {
@@ -39,10 +53,14 @@ public class MiseController {
     //creating post mapping that post the mise detail in the database
     @PostMapping("/miser")
     //p0rivate int save(@RequestBody Mise mise, @RequestBody Token token) throws Exception {
-    private int save(@RequestBody MiseToken miseToken) throws Exception {
-        System.out.println(miseToken.toString());
-        miseService.miser(miseToken.getToken(), miseToken.getIdEnchere(), miseToken.getMontant());
-        return 1;
+    private Object save(@RequestBody MiseToken miseToken) {
+            try {
+                System.out.println(miseToken.toString());
+                miseService.miser(miseToken.getToken(), miseToken.getIdEnchere(), miseToken.getMontant());
+                return new Data(1);
+            } catch (Exception e) {
+                return new Error(e.getMessage());
+            }
     }
     //creating put mapping that updates the mise detail
     @PutMapping()

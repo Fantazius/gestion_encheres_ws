@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface MiseRepository extends JpaRepository<Mise,Integer> {
@@ -21,4 +22,10 @@ public interface MiseRepository extends JpaRepository<Mise,Integer> {
 
     @Query(value = "select * from v_gagnants where idenchere=?1",nativeQuery = true)
     public Mise getGagnant(Integer idEnchere);
+
+    @Query(value = "select * from mises where idenchere=:idenchere",nativeQuery = true)
+    public List<Mise> miseByIdenchere(@Param("idenchere") int idenchere);
+
+
+
 }

@@ -29,4 +29,10 @@ public interface EnchereRepository extends JpaRepository<Enchere,Integer> {
     @Modifying
     @Query(value = "update encheres set statut=true where idenchere=:idenchere",nativeQuery = true)
     public int setFinished(@Param("idenchere") Integer IdEnchere);
+
+    @Query(value = "select * from encheres where statut='f'", nativeQuery = true)
+    public List<Enchere> getListEnchereNonFinished();
+
+    @Query(value = "select * from encheres where idutilisateur=:idUtilisateur and statut='t' order by dateenchere asc", nativeQuery = true)
+    public List<Enchere> getListEnchereHistorique(@Param("idUtilisateur") int idUtilisateur);
 }

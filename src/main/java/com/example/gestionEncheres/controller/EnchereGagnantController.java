@@ -1,26 +1,32 @@
 package com.example.gestionEncheres.controller;
 
 import com.example.gestionEncheres.format.Data;
-import com.example.gestionEncheres.service.EnchereDureeService;
+import com.example.gestionEncheres.models.Enchere;
+import com.example.gestionEncheres.models.EnchereGagnant;
 import com.example.gestionEncheres.service.EnchereGagnantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin("*")
 @RestController
-@RequestMapping("/encheresFinished")
+@RequestMapping("/encheresgagnant")
 public class EnchereGagnantController {
 
-    @Autowired(required=true)
+    @Autowired
     EnchereGagnantService enchereGagnantService;
-    @GetMapping("")
-    private Object getListEnchereFinished()
+
+    @GetMapping("/enchereHistorique/{utilisateurid}")
+    private Object getListEnchereHistorique(@PathVariable("utilisateurid") int idUtilisateur)
     {
-        try {
-            return new Data(enchereGagnantService.getListEnchereNonFinished());
+        try{
+            return new Data(enchereGagnantService.ListHistorique(idUtilisateur));
         }catch (Exception e){
-            return new Error(e);
+            return  new Error(e);
+
         }
     }
+
+
 }

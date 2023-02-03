@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/encheres")
 public class EnchereController {
-    @Autowired(required=true)
+    @Autowired
     EnchereService enchereService;
     @Autowired
     PhotoService photoService;
@@ -51,24 +51,50 @@ public class EnchereController {
 
     // ici
     @GetMapping("/search")
-    private List<Enchere> rechercher(@RequestParam(name = "motcle") String motCle, @RequestParam(name = "daty") String daty, @RequestParam(name = "prix") String prix, @RequestParam(name = "status") String status, @RequestParam(name = "categorie") String categorie) throws Exception {
+    private Object rechercher(@RequestParam(name = "motcle") String motCle, @RequestParam(name = "daty") String daty, @RequestParam(name = "prix") String prix, @RequestParam(name = "status") String status, @RequestParam(name = "categorie") String categorie) throws Exception {
         Date date = null;
         if(daty!=""){
             date = Date.valueOf(daty);
         }
-        int p = Integer.parseInt(prix);
-        boolean s = Boolean.parseBoolean(status);
-        int c = Integer.parseInt(categorie);
-        return enchereService.rechercher(motCle, date, p, s, c);
+        int p = Integer.valueOf(prix);
+        Boolean s = Boolean.valueOf(status);
+        int c = Integer.valueOf(categorie);
+        try{
+            return new Data(enchereService.rechercher(motCle, date, p, s, c));
+        }catch (Exception e){
+            return new Error(e);
+        }
+    }
+
+    @GetMapping("/enchereNonFinished")
+    private Object getListEnchereNonFinished()
+    {
+        try {
+            return new Data( enchereService.getListEnchereNonFinished());
+        }catch (Exception e){
+            return new Error(e);
+        }
+
+    }
+
+    @GetMapping("/enchereHistorique/{utilisateurid}")
+    private Object getListEnchereHistorique(@PathVariable("utilisateurid") int idUtilisateur)
+    {
+        try {
+            return new Data(enchereService.getListEnchereHistorique(idUtilisateur));
+        }catch (Exception e){
+            return new Error(e);
+        }
+
     }
 
     @GetMapping("/{idenchere}/photo")
-    private Photo getPhotoByIdEnchere(@PathVariable("idenchere")Integer idEnchere) throws Exception {
-        return photoService.getPhotoByIdEnchere(idEnchere);
+    private Object getPhotoByIdEnchere(@PathVariable("idenchere")Integer idEnchere) throws Exception {
+        return new Data(photoService.getPhotoByIdEnchere(idEnchere));
     }
     @GetMapping("/{idenchere}/gagnant")
-    private Mise getGagnant(@PathVariable("idenchere")Integer idEnchere) throws Exception {
-        return enchereService.getGagnant(idEnchere);
+    private Object getGagnant(@PathVariable("idenchere")Integer idEnchere) throws Exception {
+        return new Data(enchereService.getGagnant(idEnchere));
     }
 
     @PutMapping

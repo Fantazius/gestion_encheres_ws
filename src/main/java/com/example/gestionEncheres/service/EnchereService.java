@@ -39,8 +39,22 @@ public class EnchereService {
         return encheres;
     }
 
-    //getting a specific record by using the method findById() of JpaRepository
-    public Enchere getEncheresById(int id) {
+    public List<Enchere> getListEnchereNonFinished()
+    {
+        List<Enchere> encheres = new ArrayList<Enchere>();
+        encheresRepository.getListEnchereNonFinished().forEach(encheres::add);
+        return encheres;
+    }
+
+    public List<Enchere> getListEnchereHistorique(int idUtilisateur)
+    {
+        List<Enchere> encheres = new ArrayList<Enchere>();
+        encheresRepository.getListEnchereHistorique(idUtilisateur).forEach(encheres::add);
+        return encheres;
+    }
+    //getting a specific record by using the method findById() of CrudRepository
+    public Enchere getEncheresById(int id)
+    {
         return encheresRepository.findById(id).get();
     }
 
@@ -71,7 +85,7 @@ public class EnchereService {
     public List<Enchere> rechercher(String motCle, Date daty, int prix, boolean status, int categorie) throws Exception {
         List<Enchere> le = new ArrayList<>();
         // a modifier: user, mdp
-        Connection con = new DatabaseConnection().toCo("administrateur", "12345");
+        Connection con = new DatabaseConnection().toCo();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         String condition = "select * from enchere_globale where ";
@@ -128,7 +142,7 @@ public class EnchereService {
                 Produit p = new Produit();
                 p.setCategorie(c);
                 p.setIdProduit(data.getInt("idproduit"));
-                p.setNomProduit("nomproduit");
+                p.setNomProduit(data.getString("nomProduit"));
                 Genre g = new Genre();
                 g.setIdGenre(data.getInt("idgenre"));
                 g.setGenre(data.getString("genre"));
@@ -212,5 +226,16 @@ public class EnchereService {
         return encheresRepository.setFinished(idEnchere);
     }
 
+    public EncherePhotos[] getMyEncheres(Integer idUtilisateur) throws Exception{
+        List<Enchere> encheres=encheresRepository.getMyBids(idUtilisateur);
+        EncherePhotos[] encherePhotos=new EncherePhotos[encheres.size()];
+        Photo photo=null;
+        for (int i = 0; i < encherePhotos.length; i++) {
+            encherePhotos[i]=new EncherePhotos(encheres.get(i));
+            photo=photoRepository.findPhotoByIdEnchere(encheres.get(i).getIdEnchere());
+            encherePhotos[i].setImages(photo.getPhotos());
+        }
+        return encherePhotos;
+    }
 
 }

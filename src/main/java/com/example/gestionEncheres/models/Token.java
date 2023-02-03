@@ -3,6 +3,7 @@ package com.example.gestionEncheres.models;
 import javax.persistence.*;
 
 import com.example.gestionEncheres.models.Utilisateur;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;

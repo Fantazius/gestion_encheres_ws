@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class Mise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idmise", nullable = false)
+     @Column(name = "idmise", nullable = false)
     private int idMise;
     @ManyToOne(targetEntity = Utilisateur.class)
     @JoinColumn(name = "idutilisateur", referencedColumnName = "idutilisateur")

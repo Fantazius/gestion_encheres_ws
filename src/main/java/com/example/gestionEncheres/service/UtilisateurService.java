@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.nio.charset.StandardCharsets;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +30,11 @@ public class UtilisateurService {
         utilisateurRepository.findAll().forEach(utilisateurs::add);
         return utilisateurs;
     }
-    //getting a specific record by using the method findById() of CrudRepository
+
+    public Utilisateur getUtilisateurByIdAndCorrectMontantSolde(Integer idUtilisateur){
+        return utilisateurRepository.findUserById(idUtilisateur);
+    }
+
     public Utilisateur getUtilisateursById(int id)
     {
         return utilisateurRepository.findById(id).get();
@@ -68,6 +74,7 @@ public class UtilisateurService {
                 Token token = new Token();
                 token.setToken(TokenService.generateToken(String.valueOf(use.getIdUtilisateur())));
                 token.setUser(use);
+                token.setDateGeneration(Timestamp.from(Instant.now()));
                 tokenService.saveOrUpdate(token);
                 return new Data(tokenService.getTokenByToken(token.getToken()));
             } else {
