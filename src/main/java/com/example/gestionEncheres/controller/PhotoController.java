@@ -20,4 +20,5 @@ public class PhotoController {
     private List<Photo> findAll(){
         return photoRepository.findAll();
     }
+
 }

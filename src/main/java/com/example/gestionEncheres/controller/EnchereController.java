@@ -1,9 +1,7 @@
 package com.example.gestionEncheres.controller;
 
 import com.example.gestionEncheres.format.Data;
-import com.example.gestionEncheres.models.Enchere;
-import com.example.gestionEncheres.models.EncherePhotos;
-import com.example.gestionEncheres.models.Token;
+import com.example.gestionEncheres.models.*;
 import com.example.gestionEncheres.service.EnchereService;
 import com.example.gestionEncheres.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +60,20 @@ public class EnchereController {
         boolean s = Boolean.parseBoolean(status);
         int c = Integer.parseInt(categorie);
         return enchereService.rechercher(motCle, date, p, s, c);
+    }
+
+    @GetMapping("/{idenchere}/photo")
+    private Photo getPhotoByIdEnchere(@PathVariable("idenchere")Integer idEnchere) throws Exception {
+        return photoService.getPhotoByIdEnchere(idEnchere);
+    }
+    @GetMapping("/{idenchere}/gagnant")
+    private Mise getGagnant(@PathVariable("idenchere")Integer idEnchere) throws Exception {
+        return enchereService.getGagnant(idEnchere);
+    }
+
+    @PutMapping
+    private int finir(@RequestBody Enchere enchere){
+        return enchereService.finir(enchere.getIdEnchere());
     }
 
 }

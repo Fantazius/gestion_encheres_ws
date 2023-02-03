@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PhotoRepository extends MongoRepository<Photo,String> {
+    Photo findPhotoByIdEnchere(Integer idEnchere);
 }

@@ -71,4 +71,25 @@ public class Mise {
         this.enchere.setIdEnchere(idenchere);
         this.montant = montant;
     }
+
+    public Gagnant toGagnant(){
+        Gagnant g=new Gagnant();
+        System.out.println(this);
+        System.out.println(this.getEnchere().getIdEnchere());
+        g.setIdEnchere(this.getEnchere().getIdEnchere());
+        g.setMontant(this.montant);
+        g.setUtilisateur(this.getUtilisateur());
+        return g;
+    }
+
+    @Override
+    public String toString() {
+        return "Mise{" +
+                "idMise=" + idMise +
+                ", utilisateur=" + utilisateur +
+                ", enchere=" + enchere +
+                ", montant=" + montant +
+                ", dateMise=" + dateMise +
+                '}';
+    }
 }

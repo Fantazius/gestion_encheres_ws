@@ -40,4 +40,8 @@ public class CommissionService {
     {
         commissionRepository.save(commission);
     }
+
+    public Commission getCurrentCommission(){
+        return commissionRepository.getCurrentCommission();
+    }
 }

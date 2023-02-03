@@ -24,4 +24,9 @@ public interface EnchereRepository extends JpaRepository<Enchere,Integer> {
 
     @Query(value = "select * from encheres where idutilisateur=:id order by dateenchere desc", nativeQuery = true)
     public List<Enchere> getMyBids(@Param("id") int id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update encheres set statut=true where idenchere=:idenchere",nativeQuery = true)
+    public int setFinished(@Param("idenchere") Integer IdEnchere);
 }

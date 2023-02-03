@@ -18,4 +18,7 @@ public interface MiseRepository extends JpaRepository<Mise,Integer> {
     @Modifying
     @Query(value = "insert into mises(idutilisateur,idenchere,montant,datemise) values(:idutilisateur, :idenchere, :montant, NOW())",nativeQuery = true)
     public int addMise(@Param("idutilisateur") int idutilisateur, @Param("idenchere") int idenchere, @Param("montant") int montant);
+
+    @Query(value = "select * from v_gagnants where idenchere=?1",nativeQuery = true)
+    public Mise getGagnant(Integer idEnchere);
 }

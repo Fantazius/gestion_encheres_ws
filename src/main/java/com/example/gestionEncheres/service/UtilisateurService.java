@@ -1,9 +1,7 @@
 package com.example.gestionEncheres.service;
 
 import com.example.gestionEncheres.format.Data;
-import com.example.gestionEncheres.models.Token;
-import com.example.gestionEncheres.models.Utilisateur;
-import com.example.gestionEncheres.models.Enchere;
+import com.example.gestionEncheres.models.*;
 import com.example.gestionEncheres.repository.EnchereRepository;
 import com.example.gestionEncheres.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,5 +78,13 @@ public class UtilisateurService {
 
     public List<Enchere> getMyBids(int id) {
         return enchereRepository.getMyBids(id);
+    }
+
+    public void retrieveMontantWhenWin(Mise mise){
+        utilisateurRepository.retrieveMontantWhenWin(mise.getUtilisateur().getIdUtilisateur(),mise.getMontant());
+    }
+
+    public void collectMontantWhenWin(Mise mise, Gain gain){
+        utilisateurRepository.collectMontantWhenWin(mise.getEnchere().getUtilisateur().getIdUtilisateur(),mise.getMontant()-gain.getMontantGain());
     }
 }

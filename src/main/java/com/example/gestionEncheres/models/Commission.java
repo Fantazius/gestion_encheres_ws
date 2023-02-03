@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.sql.Date;
 @Entity
-@Table(name="commisions")
+@Table(name="commissions")
 @NoArgsConstructor
 public class Commission {
     @Id

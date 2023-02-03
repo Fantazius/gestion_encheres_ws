@@ -19,4 +19,8 @@ public class PhotoService {
     public void save(Photo photo){
         photoRepository.save(photo);
     }
+
+    public Photo getPhotoByIdEnchere(Integer idEnchere){
+        return photoRepository.findPhotoByIdEnchere(idEnchere);
+    }
 }
