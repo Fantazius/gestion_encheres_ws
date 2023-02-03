@@ -5,11 +5,9 @@ import com.example.gestionEncheres.models.*;
 import com.example.gestionEncheres.service.EnchereService;
 import com.example.gestionEncheres.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
-import java.util.List;
 
 @RestController
 @RequestMapping("/encheres")
